@@ -20,6 +20,8 @@
 
 @implementation LeveyPopListView
 @synthesize delegate;
+@synthesize isModal = _isModal;
+
 #pragma mark - initialization & cleaning up
 - (id)initWithTitle:(NSString *)aTitle options:(NSArray *)aOptions
 {
@@ -39,7 +41,7 @@
         _tableView.dataSource = self;
         _tableView.delegate = self;
         [self addSubview:_tableView];
-
+        self.isModal = YES;
     }
     return self;    
 }
@@ -120,13 +122,16 @@
 #pragma mark - TouchTouchTouch
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    // tell the delegate the cancellation
-    if (self.delegate && [self.delegate respondsToSelector:@selector(leveyPopListViewDidCancel)]) {
-        [self.delegate leveyPopListViewDidCancel];
+    if (!self.isModal)
+    {
+        // tell the delegate the cancellation
+        if (self.delegate && [self.delegate respondsToSelector:@selector(leveyPopListViewDidCancel)]) {
+            [self.delegate leveyPopListViewDidCancel];
+        }
+        
+        // dismiss self
+        [self fadeOut];   
     }
-    
-    // dismiss self
-    [self fadeOut];
 }
 
 #pragma mark - DrawDrawDraw

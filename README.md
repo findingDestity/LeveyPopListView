@@ -1,3 +1,7 @@
+### Differences from the original version
+
+Levey did an amazing work, but I needed the ability to show this controller in a modal behavior, so now there's an option isModal that is set to YES by default. Clicking anywhere outside the tableview does nothing, only selecting a row will do.
+
 ### What's it?
 
 When your app have so many options to choose, LeveyPopListView is an alternative of UIActionSheet, hope it can help someone :)

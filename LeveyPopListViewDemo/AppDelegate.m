@@ -55,6 +55,7 @@
 {
     LeveyPopListView *lplv = [[LeveyPopListView alloc] initWithTitle:@"Share Photo to..." options:_options];
     lplv.delegate = self;
+//    lplv.isModal = NO;
     [lplv showInView:self.window animated:YES];
     [lplv release];
 }

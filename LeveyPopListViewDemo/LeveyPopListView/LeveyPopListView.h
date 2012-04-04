@@ -13,9 +13,11 @@
     UITableView *_tableView;
     NSString *_title;
     NSArray *_options;
+    BOOL _isModal;
 }
 
 @property (nonatomic, assign) id<LeveyPopListViewDelegate> delegate;
+@property (assign) BOOL isModal;
 
 // The options is a NSArray, contain some NSDictionaries, the NSDictionary contain 2 keys, one is "img", another is "text".
 - (id)initWithTitle:(NSString *)aTitle options:(NSArray *)aOptions;
